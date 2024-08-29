@@ -1,0 +1,39 @@
+[2024-07-24T13:39:55.430+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-24T13:39:55.453+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dagCursea.unzip_data scheduled__2024-07-23T16:30:00+00:00 [queued]>
+[2024-07-24T13:39:55.461+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dagCursea.unzip_data scheduled__2024-07-23T16:30:00+00:00 [queued]>
+[2024-07-24T13:39:55.462+0000] {taskinstance.py:2306} INFO - Starting attempt 3 of 3
+[2024-07-24T13:39:55.479+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): unzip_data> on 2024-07-23 16:30:00+00:00
+[2024-07-24T13:39:55.489+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=118) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-07-24T13:39:55.491+0000] {standard_task_runner.py:64} INFO - Started process 127 to run task
+[2024-07-24T13:39:55.491+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'dagCursea', 'unzip_data', 'scheduled__2024-07-23T16:30:00+00:00', '--job-id', '103', '--raw', '--subdir', 'DAGS_FOLDER/__pycache__/text.py', '--cfg-path', '/tmp/tmpo8gzxcgw']
+[2024-07-24T13:39:55.492+0000] {standard_task_runner.py:91} INFO - Job 103: Subtask unzip_data
+[2024-07-24T13:39:55.550+0000] {task_command.py:426} INFO - Running <TaskInstance: dagCursea.unzip_data scheduled__2024-07-23T16:30:00+00:00 [running]> on host 0313639cbb41
+[2024-07-24T13:39:55.635+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dagCursea' AIRFLOW_CTX_TASK_ID='unzip_data' AIRFLOW_CTX_EXECUTION_DATE='2024-07-23T16:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-07-23T16:30:00+00:00'
+[2024-07-24T13:39:55.637+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-24T13:39:55.638+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2024-07-24T13:39:55.639+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'unzip -u /Documents/dado.zip -d /Documents']
+[2024-07-24T13:39:55.653+0000] {subprocess.py:86} INFO - Output:
+[2024-07-24T13:39:55.654+0000] {subprocess.py:93} INFO - /usr/bin/bash: line 1: unzip: command not found
+[2024-07-24T13:39:55.655+0000] {subprocess.py:97} INFO - Command exited with return code 127
+[2024-07-24T13:39:55.656+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-24T13:39:55.666+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 127.
+[2024-07-24T13:39:55.671+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=dagCursea, task_id=unzip_data, run_id=scheduled__2024-07-23T16:30:00+00:00, execution_date=20240723T163000, start_date=20240724T133955, end_date=20240724T133955
+[2024-07-24T13:39:55.684+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 103 for task unzip_data (Bash command failed. The command returned a non-zero exit code 127.; 127)
+[2024-07-24T13:39:55.706+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-07-24T13:39:55.734+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-24T13:39:55.743+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
